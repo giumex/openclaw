@@ -65,7 +65,10 @@ export const TwilioConfigSchema = z
      * @see https://www.twilio.com/docs/global-infrastructure/understanding-twilio-regions
      * @see https://www.twilio.com/docs/global-infrastructure/api-domain-migration-guide
      */
-    region: z.string().regex(/^[a-z0-9]+$/).optional(),
+    region: z
+      .string()
+      .regex(/^[a-z0-9]+$/)
+      .optional(),
     /**
      * Twilio Edge Location (e.g. "dublin", "sydney", "ashburn").
      * Used together with `region` to construct the API FQDN.
@@ -73,7 +76,10 @@ export const TwilioConfigSchema = z
      * Must be specified with `region` to avoid the deprecated domain pattern.
      * @see https://www.twilio.com/docs/global-infrastructure/understanding-edge-locations
      */
-    edge: z.string().regex(/^[a-z-]+$/).optional(),
+    edge: z
+      .string()
+      .regex(/^[a-z-]+$/)
+      .optional(),
   })
   .strict();
 export type TwilioConfig = z.infer<typeof TwilioConfigSchema>;
